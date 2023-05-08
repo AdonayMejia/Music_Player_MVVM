@@ -24,18 +24,13 @@ class MusicListViewModel : ViewModel() {
         )
 
         contentResolver.query(
-            SongContract.CONTENT_URI,
-            projection,
-            null,
-            null,
-            null
+            SongContract.CONTENT_URI, projection, null, null, null
         )?.use { cursor ->
             if (cursor.moveToFirst()) {
                 do {
                     val titleIndex = cursor.getColumnIndex(SongContract.Columns.SONG_NAME)
                     val songUriIndex = cursor.getColumnIndex(SongContract.Columns.SONG_URI)
-                    val albumArtUriIndex =
-                        cursor.getColumnIndex(SongContract.Columns.ALBUM_ART_URI)
+                    val albumArtUriIndex = cursor.getColumnIndex(SongContract.Columns.ALBUM_ART_URI)
 
                     if (titleIndex >= 0 && songUriIndex >= 0 && albumArtUriIndex >= 0) {
                         val title = cursor.getString(titleIndex)

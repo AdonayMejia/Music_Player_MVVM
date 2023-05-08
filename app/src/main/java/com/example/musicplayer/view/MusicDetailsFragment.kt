@@ -1,13 +1,11 @@
 package com.example.musicplayer.view
 
 import android.content.BroadcastReceiver
-import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,7 +31,6 @@ class MusicDetailsFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var songs: List<SongModel>
     private var currentIndex = 0
-    var playbackPositionBeforeTransition = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,9 +44,7 @@ class MusicDetailsFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = ActivityMusicDetailsBinding.inflate(inflater, container, false)
         return binding.root
@@ -60,9 +55,8 @@ class MusicDetailsFragment : Fragment() {
 
         songs = SongsRepository.song
         setupButtonClickListeners()
-        initSongInfo()
+        setSongInfo()
         setupSeekBarChangeListener()
-        //setupMotionLayoutTransitionListener()
         observerPlaybackPosition()
 
     }
@@ -92,7 +86,6 @@ class MusicDetailsFragment : Fragment() {
         LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(songChangedReceiver)
     }
 
-
     private fun setupObservers() {
         viewModel.progress.observe(this) { progress ->
             binding.seekBar.progress = progress
@@ -104,7 +97,7 @@ class MusicDetailsFragment : Fragment() {
 
         viewModel.songIndex.observe(this) { newIndex ->
             currentIndex = newIndex
-            playSong()
+            playMusic()
         }
 
         viewModel.currentSong.observe(this) { currentSong ->
@@ -130,19 +123,11 @@ class MusicDetailsFragment : Fragment() {
                 val albumArtUri = Uri.parse(it.getStringExtra(ALBUM_ART_URI).orEmpty())
                 val song = SongModel(songTitle, songUri, albumArtUri)
                 updateSongInfo(song)
-                context?.showSongChangedToast(songTitle)
             }
         }
     }
 
-    private fun Context.showSongChangedToast(songTitle: String) {
-        Toast.makeText(
-            this,
-            "song $songTitle", Toast.LENGTH_SHORT
-        ).show()
-    }
-
-    private fun initSongInfo() {
+    private fun setSongInfo() {
         val args = arguments
         val songTitle = args?.getString(SONG_TITLE_KEY).orEmpty()
         binding.songName.text = songTitle
@@ -150,10 +135,10 @@ class MusicDetailsFragment : Fragment() {
         binding.songImage.setImageURI(
             songs.getOrNull(currentIndex)?.image ?: Uri.EMPTY
         )
-        playSong()
+        playMusic()
     }
 
-    private fun playSong() {
+    private fun playMusic() {
         viewModel.playSong()
 
         MediaPlayer.mediaPlayer?.let { mediaPlayer ->
@@ -182,19 +167,15 @@ class MusicDetailsFragment : Fragment() {
                     MediaPlayer.mediaPlayer?.seekTo(progress)
                 }
             }
-
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
         })
     }
-        companion object {
+
+    companion object {
         const val SONG_TITLE_KEY = "songTitle"
         const val SONG_TITLE = "song_title"
         const val SONG_URI = "song_uri"
         const val ALBUM_ART_URI = "album_art_uri"
-        const val VALOR_INITIAL_INDEX = 0
-        const val INITIAL_PLAYBACK_POSITION = 0
     }
-
-
 }

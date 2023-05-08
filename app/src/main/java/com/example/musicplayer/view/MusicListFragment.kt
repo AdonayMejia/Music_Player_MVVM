@@ -1,9 +1,6 @@
 package com.example.musicplayer.view
 
-import android.content.ContentValues.TAG
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,10 +35,8 @@ class MusicListFragment : Fragment() {
     private var songs: MutableList<SongModel> = mutableListOf()
     private var _binding: FragmentMusicListBinding? = null
     private val binding get() = _binding!!
-        override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMusicListBinding.inflate(inflater, container, false)
         return binding.root
@@ -58,7 +53,7 @@ class MusicListFragment : Fragment() {
         addSongs()
         observeDeletedSongs()
 
-        }
+    }
 
     private fun observeDeletedSongs() {
         settingViewModel.deletedSongPosition.observe(viewLifecycleOwner) { position ->
@@ -117,9 +112,7 @@ class MusicListFragment : Fragment() {
     private fun showNoSongsToast() {
         context?.let { ctx ->
             Toast.makeText(
-                ctx,
-                "No songs",
-                Toast.LENGTH_SHORT
+                ctx, "No songs", Toast.LENGTH_SHORT
             ).show()
         }
     }
@@ -132,8 +125,7 @@ class MusicListFragment : Fragment() {
         recyclerView.adapter = adapter
 
         val dividerItemDecoration = DividerItemDecoration(
-            recyclerView.context,
-            layoutManager.orientation
+            recyclerView.context, layoutManager.orientation
         )
         recyclerView.addItemDecoration(dividerItemDecoration)
     }
@@ -141,12 +133,13 @@ class MusicListFragment : Fragment() {
     private fun onSongClick(position: Int) {
         playSelectedSong(position)
         navigateToDetailActivity(position)
-    }
+    } 
 
     private fun playSelectedSong(position: Int) {
         MediaPlayer.mediaPlayer?.release()
         currentSongIndex = position
-        MediaPlayer.mediaPlayer = android.media.MediaPlayer.create(context, songs[position].resource)
+        MediaPlayer.mediaPlayer =
+            android.media.MediaPlayer.create(context, songs[position].resource)
         MediaPlayer.mediaPlayer?.start()
     }
 

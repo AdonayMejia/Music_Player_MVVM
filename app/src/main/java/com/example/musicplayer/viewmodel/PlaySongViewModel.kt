@@ -8,7 +8,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import com.example.musicplayer.R
 import com.example.musicplayer.model.MediaPlayer
 import com.example.musicplayer.model.SongModel
 
@@ -43,7 +42,6 @@ class PlaySongViewModel(application: Application) : AndroidViewModel(application
 
     fun playSong() {
         handler.postDelayed(updateSeekBar, 1000)
-
     }
 
     private val updateSeekBar = object : Runnable {
