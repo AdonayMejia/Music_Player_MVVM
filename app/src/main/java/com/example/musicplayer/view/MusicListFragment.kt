@@ -133,7 +133,7 @@ class MusicListFragment : Fragment() {
     private fun onSongClick(position: Int) {
         playSelectedSong(position)
         navigateToDetailActivity(position)
-    } 
+    }
 
     private fun playSelectedSong(position: Int) {
         MediaPlayer.mediaPlayer?.release()

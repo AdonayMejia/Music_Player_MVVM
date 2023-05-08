@@ -22,7 +22,7 @@ class SettingSongAdapter(
         val inflater = LayoutInflater.from(parent.context)
         val binding = SongListItemBinding.inflate(inflater, parent, false)
         return SettingSongViewHolder(binding)
-    }
+    } 
 
     override fun onBindViewHolder(holder: SettingSongAdapter.SettingSongViewHolder, position: Int) {
         holder.bind(songs[position], onSongClickListener, onDeleteClickListener)

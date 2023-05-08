@@ -8,6 +8,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.example.musicplayer.R
 import com.example.musicplayer.model.MediaPlayer
 import com.example.musicplayer.model.SongModel
 
@@ -58,11 +59,11 @@ class PlaySongViewModel(application: Application) : AndroidViewModel(application
             if (mediaPlayer.isPlaying) {
                 mediaPlayer.pause()
                 handler.removeCallbacks(updateSeekBar)
-                playPauseButtonMutableLiveData.postValue(android.R.drawable.ic_media_play)
+                playPauseButtonMutableLiveData.postValue(R.drawable.playbtn)
             } else {
                 mediaPlayer.start()
                 handler.postDelayed(updateSeekBar, 1000)
-                playPauseButtonMutableLiveData.postValue(android.R.drawable.ic_media_pause)
+                playPauseButtonMutableLiveData.postValue(R.drawable.pause)
             }
         }
     }

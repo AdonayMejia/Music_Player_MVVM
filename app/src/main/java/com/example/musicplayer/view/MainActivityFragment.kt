@@ -11,6 +11,5 @@ class MainActivityFragment : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainFragmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
     }
 }
