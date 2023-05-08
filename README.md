@@ -1,6 +1,6 @@
-# Week_3_Music_Player
+# Week_5_Music_Player_MVVM
 
-This repository contains code for a music player project. The code is written in Kotlin. It allows users to play/pause, skip to the next or previous song.
+This repository contains code for a music player project using MVVM. The code is written in Kotlin. It allows users to play/pause, skip to the next or previous song. Add new songs to the playlist and delete them.
  
 ## Getting Started
 
