@@ -15,7 +15,10 @@ class SettingSongAdapter(
     private val onDeleteClickListener: (Int) -> Unit
 ) : RecyclerView.Adapter<SettingSongAdapter.SettingSongViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SettingSongAdapter.SettingSongViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): SettingSongAdapter.SettingSongViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = SongListItemBinding.inflate(inflater, parent, false)
         return SettingSongViewHolder(binding)
@@ -27,8 +30,8 @@ class SettingSongAdapter(
 
     override fun getItemCount(): Int = songs.size
 
-    inner class SettingSongViewHolder(private val binding : SongListItemBinding)
-        : RecyclerView.ViewHolder(binding.root){
+    inner class SettingSongViewHolder(private val binding: SongListItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(
             song: SongModel,
             onSongClickListener: (Int) -> Unit,
@@ -41,9 +44,9 @@ class SettingSongAdapter(
                 else Color.TRANSPARENT
             )
 
-            Glide.with(binding.albumArt.context)
+            Glide.with(binding.imageItem.context)
                 .load(song.image)
-                .into(binding.albumArt)
+                .into(binding.imageItem)
 
             itemView.setOnClickListener {
                 onSongClickListener(adapterPosition)

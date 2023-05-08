@@ -7,7 +7,8 @@ data class SongModel(
     val name: String,
     val resource: Uri,
     val image: Uri,
-    var selected: Boolean = false){
+    var selected: Boolean = false
+) {
     companion object {
         fun create(
             name: String,

@@ -11,8 +11,7 @@ import com.example.musicplayer.R
 import com.example.musicplayer.model.SongModel
 
 class SongsAdapter(
-    private val songs: List<SongModel>,
-    private val onSongClickListener: (Int) -> Unit
+    private val songs: List<SongModel>, private val onSongClickListener: (Int) -> Unit
 ) : RecyclerView.Adapter<SongsAdapter.SongViewHolder>() {
 
     @Suppress("DEPRECATION")
@@ -26,6 +25,7 @@ class SongsAdapter(
             }
         }
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
             R.layout.song_item, parent, false
