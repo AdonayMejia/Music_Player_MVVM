@@ -13,17 +13,15 @@ object SongsRepository {
     fun init(context: Context) {
         this.context = context
         val contentResolver = context.contentResolver
-        contentResolver.query(SongProvider.SONG_PROVIDER_URI,
-            null,
-            null,
-            null,
-            null)?.let {
-                song = SongProvider.getSongsFromCursor(it)
-                it.close()
+        contentResolver.query(
+            SongProvider.SONG_PROVIDER_URI, null, null, null, null
+        )?.let {
+            song = SongProvider.getSongsFromCursor(it)
+            it.close()
         }
     }
 
-    fun getDefaultSongs() : List<SongModel> {
+    fun getDefaultSongs(): List<SongModel> {
         return song.take(3)
     }
 }
