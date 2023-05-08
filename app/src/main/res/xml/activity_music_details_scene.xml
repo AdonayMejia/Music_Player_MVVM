@@ -18,7 +18,7 @@
         <Constraint android:id="@+id/songName">
             <CustomAttribute
                 app:attributeName="textColor"
-                app:customColorValue="#FF000000" />
+                app:customColorValue="#3D5AFE" />
         </Constraint>
     </ConstraintSet>
 
@@ -27,7 +27,7 @@
         <Constraint android:id="@+id/songName">
             <CustomAttribute
                 app:attributeName="textColor"
-                app:customColorValue="#9C27B0" />
+                app:customColorValue="#F50057" />
         </Constraint>
     </ConstraintSet>
 

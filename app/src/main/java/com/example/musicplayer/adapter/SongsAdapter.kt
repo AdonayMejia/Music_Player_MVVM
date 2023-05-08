@@ -16,8 +16,8 @@ class SongsAdapter(
 
     @Suppress("DEPRECATION")
     inner class SongViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title: TextView = itemView.findViewById(R.id.songTitle)
-        val image: ImageView = itemView.findViewById(R.id.thumbnail)
+        val songName: TextView = itemView.findViewById(R.id.songTitle)
+        val songImage: ImageView = itemView.findViewById(R.id.thumbnail)
 
         init {
             itemView.setOnClickListener {
@@ -35,8 +35,8 @@ class SongsAdapter(
 
     override fun onBindViewHolder(holder: SongViewHolder, position: Int) {
         val song = songs[position]
-        holder.title.text = song.name
-        Glide.with(holder.image.context).load(song.image).into(holder.image)
+        holder.songName.text = song.name
+        Glide.with(holder.songImage.context).load(song.image).into(holder.songImage)
     }
 
     override fun getItemCount(): Int = songs.size

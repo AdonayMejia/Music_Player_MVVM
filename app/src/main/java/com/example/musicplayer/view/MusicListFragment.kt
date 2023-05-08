@@ -68,7 +68,7 @@ class MusicListFragment : Fragment() {
     private fun addSongs() {
         settingViewModel.songs.observe(viewLifecycleOwner) { newSongs ->
             songs = newSongs.toMutableList()
-            setupRecyclerView()
+            prepareRecyclerView()
         }
     }
 
@@ -77,7 +77,7 @@ class MusicListFragment : Fragment() {
         recyclerView = binding.songsRecycler
 
         binding.songListPlay.setOnClickListener {
-            playPlaylist()
+            startPlaylist()
         }
 
         binding.songListRandom.setOnClickListener {
@@ -89,7 +89,7 @@ class MusicListFragment : Fragment() {
         }
     }
 
-    private fun playPlaylist() {
+    private fun startPlaylist() {
         if (songs.isNotEmpty()) {
             currentSongIndex = 0
             playSelectedSong(currentSongIndex)
@@ -112,12 +112,12 @@ class MusicListFragment : Fragment() {
     private fun showNoSongsToast() {
         context?.let { ctx ->
             Toast.makeText(
-                ctx, "No songs", Toast.LENGTH_SHORT
+                ctx, "No songs available on playlist", Toast.LENGTH_SHORT
             ).show()
         }
     }
 
-    private fun setupRecyclerView() {
+    private fun prepareRecyclerView() {
         val layoutManager = LinearLayoutManager(context)
         recyclerView.layoutManager = layoutManager
 

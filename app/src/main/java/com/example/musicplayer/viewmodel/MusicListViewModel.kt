@@ -5,6 +5,7 @@ import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.musicplayer.model.SongContract
 import com.example.musicplayer.model.SongModel
 
 class MusicListViewModel : ViewModel() {
@@ -44,19 +45,6 @@ class MusicListViewModel : ViewModel() {
             }
         }
         songsMutableLiveData.postValue(songs)
-    }
-
-    object SongContract {
-        private const val AUTHORITY = "com.example.musicplayer.provider"
-        private const val BASE_PATH = "songs"
-        val CONTENT_URI: Uri = Uri.parse("content://$AUTHORITY/$BASE_PATH")
-
-        object Columns {
-            const val ID = "_id"
-            const val SONG_NAME = "song_name"
-            const val SONG_URI = "song_uri"
-            const val ALBUM_ART_URI = "album_art_uri"
-        }
     }
 }
 

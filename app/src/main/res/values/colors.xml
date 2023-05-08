@@ -8,4 +8,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#4D4B4B</color>
+    <color name="colorPrimary">#E27979</color>
+    <color name="colorPrimaryDark">#FBB8AC</color>
+    <color name="colorAccent">#FEDBD0</color>
+    <color name="darkColorPrimary">#FFCF44</color>
+    <color name="darkPrimary">#FD9725</color>
+    <color name="darkAccentPrimary">#FD9725</color>
+    <color name="ColorSecondary">#FB5406</color>
+    <color name="ColorSecondaryVariant">#E86806</color>
 </resources>

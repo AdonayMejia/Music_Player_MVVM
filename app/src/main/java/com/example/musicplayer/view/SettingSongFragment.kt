@@ -67,7 +67,7 @@ class SettingSongFragment : Fragment() {
         recyclerView.layoutManager = layoutManager
 
         val adapter = SettingSongAdapter(
-            songs, this::onSongClick, this::onDeleteButtonClick
+            songs, this::onSongClickListener, this::onDeleteButtonClick
         )
         recyclerView.adapter = adapter
 
@@ -81,7 +81,7 @@ class SettingSongFragment : Fragment() {
         viewModel.deleteSong(position, requireActivity())
     }
 
-    private fun onSongClick(position: Int) {
+    private fun onSongClickListener(position: Int) {
         songs[position].selected = !songs[position].selected
         recyclerView.adapter?.notifyItemChanged(position)
     }

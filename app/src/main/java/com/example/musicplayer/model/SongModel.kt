@@ -10,7 +10,7 @@ data class SongModel(
     var selected: Boolean = false
 ) {
     companion object {
-        fun create(
+        fun create(//function to transform the data class type for the type require to use
             name: String,
             songFile: Int,
             @DrawableRes songImageRes: Int,

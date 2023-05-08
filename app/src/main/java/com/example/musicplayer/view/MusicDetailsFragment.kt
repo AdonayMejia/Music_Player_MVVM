@@ -53,7 +53,7 @@ class MusicDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         songs = SongsRepository.song
-        setupButtonClickListeners()
+        prepareButtonClickListeners()
         setSongInfo()
         setupSeekBarChangeListener()
         observerPlaybackPosition()
@@ -72,7 +72,7 @@ class MusicDetailsFragment : Fragment() {
             viewModel.updatePlaybackPosition(mediaPlayer.currentPosition)
         }
     }
-
+//using broadcast to send an alert when the song state change
     override fun onResume() {
         super.onResume()
         val filter = IntentFilter(PlaySongViewModel.ACTION_SONG_CHANGED)
@@ -105,7 +105,7 @@ class MusicDetailsFragment : Fragment() {
 
     }
 
-    private fun setupButtonClickListeners() = with(binding) {
+    private fun prepareButtonClickListeners() = with(binding) {
         play.setOnClickListener { viewModel.onPlayPauseButtonClick() }
         prev.setOnClickListener { viewModel.onPreviousButtonClick(songs) }
         next.setOnClickListener { viewModel.onNextButtonClick(songs) }
