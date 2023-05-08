@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/musicListFragment">
+
+    <fragment
+        android:id="@+id/musicDetailsFragment"
+        android:name="com.example.musicplayer.view.MusicDetailsFragment"
+        android:label="activity_music_details"
+        tools:layout="@layout/activity_music_details" >
+        <action
+            android:id="@+id/action_musicDetailsFragment_to_settingSongFragment"
+            app:destination="@id/settingSongFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/musicListFragment"
+        android:name="com.example.musicplayer.view.MusicListFragment"
+        android:label="fragment_music_list"
+        tools:layout="@layout/fragment_music_list" >
+        <action
+            android:id="@+id/action_musicListFragment_to_musicDetailsFragment"
+            app:destination="@id/musicDetailsFragment" />
+        <action
+            android:id="@+id/action_musicListFragment_to_settingSongFragment"
+            app:destination="@id/settingSongFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingSongFragment"
+        android:name="com.example.musicplayer.view.SettingSongFragment"
+        android:label="fragment_setting_song"
+        tools:layout="@layout/fragment_setting_song" />
+</navigation>

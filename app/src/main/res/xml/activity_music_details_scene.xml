@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetStart="@+id/start"
+        motion:constraintSetEnd="@+id/end"
+        motion:duration="1000">
+
+        <OnClick
+            motion:touchAnchorId="@+id/songName"
+            />
+
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint android:id="@+id/songName">
+            <CustomAttribute
+                app:attributeName="textColor"
+                app:customColorValue="#FF000000" />
+        </Constraint>
+    </ConstraintSet>
+
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint android:id="@+id/songName">
+            <CustomAttribute
+                app:attributeName="textColor"
+                app:customColorValue="#9C27B0" />
+        </Constraint>
+    </ConstraintSet>
+
+
+</MotionScene>
