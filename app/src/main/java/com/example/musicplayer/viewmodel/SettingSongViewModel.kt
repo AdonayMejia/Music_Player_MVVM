@@ -20,15 +20,14 @@ class SettingSongViewModel(songRepository: SongsRepository) : ViewModel() {
 
     private val _deletedSongPosition = MutableLiveData<Int?>()
     val deletedSongPosition: LiveData<Int?>
-    get() = _deletedSongPosition
+        get() = _deletedSongPosition
 
     private fun removeSongFromHomeScreen(position: Int) {
         _songs.value = _songs.value?.filterIndexed { index, _ -> index != position }
     }
 
     fun deleteSong(position: Int, activity: Activity) {
-        val deleteUri =
-            ContentUris.withAppendedId(SONG_PROVIDER_URI, position.toLong())
+        val deleteUri = ContentUris.withAppendedId(SONG_PROVIDER_URI, position.toLong())
         activity.contentResolver.delete(deleteUri, null, null)
 
         _deletedSongPosition.value = position
@@ -48,11 +47,7 @@ class SettingSongViewModel(songRepository: SongsRepository) : ViewModel() {
 
     fun fetchSongsFromProvider(activity: Activity): MutableList<SongModel> {
         val cursor = activity.contentResolver.query(
-            SONG_PROVIDER_URI,
-            null,
-            null,
-            null,
-            null
+            SONG_PROVIDER_URI, null, null, null, null
         )
 
         val songs = mutableListOf<SongModel>()
@@ -72,7 +67,7 @@ class SettingSongViewModel(songRepository: SongsRepository) : ViewModel() {
 
                 } catch (e: IllegalArgumentException) {
                     Log.e(
-                        "SettingScreenViewModel",
+                        "SettingSongVM",
                         "Error reading song data from provider: ${e.message}"
                     )
                 }

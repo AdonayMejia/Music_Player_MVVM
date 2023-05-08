@@ -30,8 +30,7 @@ class SettingSongFragment : Fragment() {
     private lateinit var songs: MutableList<SongModel>
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSettingSongBinding.inflate(inflater, container, false)
         return binding.root
@@ -68,15 +67,12 @@ class SettingSongFragment : Fragment() {
         recyclerView.layoutManager = layoutManager
 
         val adapter = SettingSongAdapter(
-            songs,
-            this::onSongClick,
-            this::onDeleteButtonClick
+            songs, this::onSongClick, this::onDeleteButtonClick
         )
         recyclerView.adapter = adapter
 
         val dividerItemDecoration = DividerItemDecoration(
-            recyclerView.context,
-            layoutManager.orientation
+            recyclerView.context, layoutManager.orientation
         )
         recyclerView.addItemDecoration(dividerItemDecoration)
     }
